@@ -1,12 +1,13 @@
 import { defineNavbarConfig } from 'vuepress-theme-plume'
 
 export const navbar = defineNavbarConfig([
-  { text: '首页', link: '/' },
-  { text: '博客', link: '/blog/' },
-  { text: '标签', link: '/blog/tags/' },
-  { text: '归档', link: '/blog/archives/' },
+  { text: 'Java', link: '/notes/java/Java基础.md', activeMatch: '^/java/',},
+  { text: '框架', link: '/frame/' },
+  { text: '数据库', link: '/database/' },
+  { text: 'MQ', link: '/mq/' },
+  { text: '备忘录', link: '/memorandum/' },
   {
-    text: '笔记',
+    text: '更多',
     items: [{ text: '示例', link: '/notes/demo/README.md' }]
   },
 ])

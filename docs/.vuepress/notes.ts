@@ -6,8 +6,23 @@ const demoNote = defineNoteConfig({
   sidebar: ['', 'foo', 'bar'],
 })
 
+const javaNote = defineNoteConfig({
+  dir: 'java',
+  link: '/java',
+  sidebar:[
+    {
+      text: 'Java',
+      collapsed: false,
+      items: [
+        'Java基础',
+        'JVM',
+      ],
+    },
+  ]
+})
+
 export const notes = defineNotesConfig({
   dir: 'notes',
   link: '/',
-  notes: [demoNote],
+  notes: [javaNote, demoNote],
 })
