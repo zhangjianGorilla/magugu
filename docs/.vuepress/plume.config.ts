@@ -6,9 +6,9 @@ import { notes } from './notes'
  * @see https://theme-plume.vuejs.press/config/basic/
  */
 export default defineThemeConfig({
-  logo: 'https://theme-plume.vuejs.press/plume.png',
+  logo: '/logo.svg',
   // your git repo url
-  docsRepo: '',
+  docsRepo: 'https://github.com/zhangjianGorilla/magugu',
   docsDir: 'docs',
 
   appearance: true,
@@ -25,7 +25,7 @@ export default defineThemeConfig({
   navbar,
   notes,
   social: [
-    { icon: 'github', link: '/' },
+    { icon: 'github', link: 'https://github.com/zhangjianGorilla/magugu' },
   ],
 
 })

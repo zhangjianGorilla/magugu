@@ -8,6 +8,12 @@ export default defineUserConfig({
   title: '麻咕咕',
   description: '麻咕咕？你知道是啥吗？',
 
+  head: [
+    ['link', { rel: 'icon', type: 'image/ico', sizes: '32x32', href: '/favicon-32x32.ico' }],
+    ['link', { rel: 'icon', type: 'image/ico', sizes: '16x16', href: '/favicon-16x16.ico' }],
+    ['meta', { name: 'google-site-verification', content: 'X5YSaTDn-pKqQBUKD_05_dQcxVItzEq7Rlbg2ZEU7AM' }],
+  ],
+
   bundler: viteBundler(),
 
   theme: plumeTheme({
