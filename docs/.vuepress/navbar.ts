@@ -41,7 +41,7 @@ export const navbar = defineNavbarConfig([
     items: [
       { 
         text: 'ArchLinux', 
-        link: '/notes/other/ArchLinux.md' 
+        link: '/notes/other/Arch Linux.md' 
       }
     ]
   },

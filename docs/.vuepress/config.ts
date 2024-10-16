@@ -25,10 +25,10 @@ export default defineUserConfig({
        * Shiki 代码高亮
        * @see https://theme-plume.vuejs.press/config/plugins/code-highlight/
        */
-      // shiki: {
+      shiki: {
            // 强烈建议预设代码块高亮语言，插件默认加载所有语言会产生不必要的时间开销
-      //   languages: ['shell', 'bash', 'typescript', 'javascript'],
-      // },
+        languages: ['shell', 'bash', 'typescript', 'javascript'],
+      },
 
       /**
        * markdown enhance
@@ -36,34 +36,34 @@ export default defineUserConfig({
        */
       markdownEnhance: {
         demo: true,
-      //   include: true,
-      //   chart: true,
-      //   echarts: true,
-      //   mermaid: true,
-      //   flowchart: true,
+        include: true,
+        chart: true,
+        echarts: true,
+        mermaid: true,
+        flowchart: true,
       },
 
       /**
        *  markdown power
        * @see https://theme-plume.vuejs.press/config/plugin/markdown-power/
        */
-      // markdownPower: {
-      //   pdf: true,
-      //   caniuse: true,
-      //   plot: true,
-      //   bilibili: true,
-      //   youtube: true,
-      //   icons: true,
-      //   codepen: true,
-      //   replit: true,
-      //   codeSandbox: true,
-      //   jsfiddle: true,
-      //   repl: {
-      //     go: true,
-      //     rust: true,
-      //     kotlin: true,
-      //   },
-      // },
+      markdownPower: {
+        pdf: true,
+        caniuse: true,
+        plot: true,
+        bilibili: true,
+        youtube: true,
+        icons: true,
+        codepen: true,
+        replit: true,
+        codeSandbox: true,
+        jsfiddle: true,
+        repl: {
+          go: true,
+          rust: true,
+          kotlin: true,
+        },
+      },
 
       /**
        * 评论 comments
