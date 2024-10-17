@@ -145,6 +145,110 @@ mount /dev/sdax mnt/home
 先挂载根分区，再挂载 EFI 分区
 :::
 
+### 配置镜像源
+
+```bash
+```
+
+### 安装系统
+
+```bash
+# 必须的基础包
+pacstrap /mnt base base-devel linux linux-headers linux-firmware
+
+# 功能性软件
+pacstrap /mnt dhcpcd iwd vim bash-completion
+```
+
+### 生成 fstab 文件
+
+```bash
+genfstab -U /mnt >> /mnt/etc/fstab
+
+cat /mnt/etc/fstab  # 检查有没有错
+```
+
+### chroot 到新安装的系统
+
+```bash
+arch-chroot /mnt
+```
+
+### 设置时区
+
+```bash
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+# 将正确的 UTC 时间写入硬件时间
+hwclock --systohc
+```
+
+### 区域和本地化设置
+
+编辑 `/etc/locale.gen` 文件，将 `en_US.UTF-8` 和 `zh_CN.UTF-8` 行的注释(#)去掉
+```bash
+# 编辑 locale.gen 文件
+vim /etc/locale.gen
+
+# 生成 locale 信息
+locale-gen
+
+# 设定 LANG 变量
+echo 'LANG=en_US.UTF-8' > /etc/locale.conf
+```
+
+### 网络配置
+
+```bash
+# 设置主机名
+vim /etc/hostname
+Arch
+
+vim /etc/hosts
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   Arch
+```
+
+### 为 `root` 用户设置密码
+
+```bash
+passwd root
+```
+
+### 安装微码
+
+```bash
+pacman -S intel-ucode   #Intel
+pacman -S amd-ucode     #AMD
+```
+
+### 安装引导程序
+
+```bash
+pacman -S grub efibootmgr   #grub是启动引导器，efibootmgr被 grub 脚本用来将启动项写入 NVRAM。
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+vim /etc/default/grub
+# 去掉 `GRUB_CMDLINE_LINUX_DEFAULT` 一行中最后的 `quiet` 参数；
+# 把 `loglevel` 从 3 改成 5（可选，以便后续如果出现系统错误，方便排错）；
+# 在最后加上 `nowatchdog` 提升开机速度
+```
+::: note
+使用 Nvidia 需要在 `GRUB_CMDLINE_LINUX_DEFAULT` 或 `GRUB_CMDLINE_LINUX` 加入参数 `nvidia_drm.modeset=1`
+:::
+
+生成 GRUB 配置文件
+```bash
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+### 基础安装完成，重启
+```bash
+exit              # 退出 chroot 环境
+umount -R /mnt    # 手动卸载被挂载的分区
+reboot            # 重启
+```
+
 ## 推荐网站
 [ArchWiki](https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97)
 [大佬的网站](https://archlinuxstudio.github.io/ArchLinuxTutorial/#/)
