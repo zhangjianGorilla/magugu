@@ -112,6 +112,39 @@ New disk label type? gpt        #输入gpt 将磁盘类型转换为gpt 如磁盘
 quit                            #最后quit退出parted命令行交互
 ```
 
+使用 `cfdisk` 命令进行磁盘分区
+
+```bash
+cfdisk /dev/sda                # 分区操作
+fdisk -l                       # 查看磁盘情况 
+```
+
+::: note 
+创建磁盘并分好区后一定要先 `Write` 然后在 `Quite`。
+:::
+
+### 格式化分区
+
+需要对各分区用合适的文件系统进行格式化。
+```bash
+# sdax 中的 x 表示分区的序号，根据分区时设置的来
+mkfs.ext4 /dev/sdax           # 格式化根目录 `/` 和 `home` 目录的两个分区
+mkfs.vfat /dev/sdax           # 格式化 `efi` 分区
+```
+
+### 挂载分区
+
+```bash
+mount /dev/sdax /mnt
+mkdir /mnt/efi
+mount /dev/sdax /mnt/efi
+mkdir /mnt/home
+mount /dev/sdax mnt/home
+```
+::: note 
+先挂载根分区，再挂载 EFI 分区
+:::
+
 ## 推荐网站
 [ArchWiki](https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97)
 [大佬的网站](https://archlinuxstudio.github.io/ArchLinuxTutorial/#/)
