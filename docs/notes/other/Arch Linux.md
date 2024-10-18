@@ -249,6 +249,51 @@ umount -R /mnt    # 手动卸载被挂载的分区
 reboot            # 重启
 ```
 
+### 创建非 root 用户
+
+```bash
+# 创建用户
+useradd -m -G wheel -s /bin/bash username
+# 为新用户设置密码
+passwd username
+# 编辑 sudoers 配置文件
+EDITOR=vim visudo
+# 将下面一行，取消注释
+#%wheel ALL=(ALL:ALL) ALL
+```
+
+### 开启 32 位支持库 & 添加 archlinuxcn 源
+
+```bash
+vim /etc/pacman.conf
+# 去掉下面两行的前面的 # 号
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+
+# 添加archlinuxcn源   在最后面加
+[archlinuxcn]
+SigLevel = TrustAll
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+
+# 同步一下
+pacman -Syy
+
+# 安装archlinux密钥环
+pacman -S archlinuxcn-keyring
+```
+
+::: tip
+# 如果安装archlinux密钥环报错就按顺序执行下面的操作
+pacman -Syu haveged
+systemctl start haveged
+systemctl enable haveged
+
+rm -fr /etc/pacman.d/gnupg
+pacman-key --init
+pacman-key --populate archlinux
+pacman-key --populate archlinuxcn
+```
+
 ## 推荐网站
 [ArchWiki](https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97)
 [大佬的网站](https://archlinuxstudio.github.io/ArchLinuxTutorial/#/)
