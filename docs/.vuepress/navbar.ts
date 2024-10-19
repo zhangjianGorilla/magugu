@@ -41,7 +41,13 @@ export const navbar = defineNavbarConfig([
     items: [
       { 
         text: 'ArchLinux', 
-        link: '/notes/other/Arch Linux.md' 
+        link: '/notes/other/ArchLinux.md',
+        icon: 'devicon:archlinux'
+      },
+      {
+        text: 'Hyprland',
+        link: '/notes/other/Hyprland.md',
+        icon: 'simple-icons:hyprland'
       }
     ]
   },
