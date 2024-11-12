@@ -248,6 +248,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 exit              # 退出 chroot 环境
 umount -R /mnt    # 手动卸载被挂载的分区
 reboot            # 重启
+
+systemctl start dhcpcd # 重启后立即启动 dhcp
+systemctl start iwd # 如果是无线网络，需要启动 iwd
+iwctl # 重复之前连接网络的操作
 ```
 
 ### 创建非 root 用户
