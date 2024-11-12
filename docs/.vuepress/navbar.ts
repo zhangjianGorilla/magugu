@@ -48,6 +48,11 @@ export const navbar = defineNavbarConfig([
         text: 'Hyprland',
         link: '/notes/other/Hyprland.md',
         icon: 'simple-icons:hyprland'
+      },
+      {
+        text: 'foo',
+        link: '/notes/other/foo.md',
+        // icon: 'simple-icons:hyprland'
       }
     ]
   },

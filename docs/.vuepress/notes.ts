@@ -77,7 +77,8 @@ const otherNote = defineNoteConfig({
       collapsed: false,
       items: [
         'ArchLinux',
-        'Hyprland'
+        'Hyprland',
+        'foo'
       ]
     }
   ],
