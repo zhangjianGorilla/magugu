@@ -21,7 +21,7 @@ export const navbar = defineNavbarConfig([
     icon: 'devicon:spring-wordmark'
   },
   { text: '数据库', 
-    link: '/notes/database/MySQL.md', 
+    link: '/notes/database/README.md',
     activeMatch: '^/database/', 
     icon: 'iconoir:database-tag',
   },

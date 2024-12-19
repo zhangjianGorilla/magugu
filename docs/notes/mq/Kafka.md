@@ -5,6 +5,7 @@ tags:
   - 低延时
 createTime: 2024/10/11 09:46:54
 permalink: /mq/ypxabaw4/
+icon: skill-icons:kafka
 ---
 
 ## 消息队列的流派

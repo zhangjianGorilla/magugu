@@ -43,13 +43,13 @@ const databaseNote = defineNoteConfig({
       icon: 'iconoir:database-tag',
       collapsed: false,
       items: [
+        '',
         {
           text: 'MySQL',
-          icon: 'skill-icons:mysql-dark',
+          icon: 'skill-icons:mysql-light',
           prefix: 'mysql',
           collapsed: true,
           items: [
-            '概述',
             '安装',
             'SQL概述',
             '运算符',
